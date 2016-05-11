@@ -7,7 +7,7 @@
 #SBATCH -n 1         # number of cores
 #SBATCH -N 1         # number of nodes
 #SBATCH --mem 8000           # memory pool for all cores
-#SBATCH -t 0-01:30         # time (D-HH:MM)
+#SBATCH -t 0-03:00         # time (D-HH:MM)
 #SBATCH -o ../log/bam_to_sam_%A.out          # STDOUT
 #SBATCH -e ../log/bam_to_sam_%A.err         # STDERR
 
