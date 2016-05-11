@@ -6,7 +6,7 @@
 #SBATCH -p serial_requeue          # partition (general,serial_requeue)
 #SBATCH -n 1         # number of cores
 #SBATCH -N 1         # number of nodes
-#SBATCH –mem 4000           # memory pool for all cores
+#SBATCH --mem 4000           # memory pool for all cores
 #SBATCH -t 0-0:30         # time (D-HH:MM)
 #SBATCH -o log/bam_to_sam_%A.out          # STDOUT
 #SBATCH -e log/bam_to_sam_%A.err         # STDERR

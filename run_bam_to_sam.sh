@@ -6,7 +6,7 @@
 #
 
 # inputs
-DATA="/n/eddyfs01/pkoo/data/opticlobe/alignment/STAR1pass/test"
+DATA="/n/eddyfs01/pkoo/data/opticlobe/alignment/STAR1pass/test/"
 
 # make alignment directory, if doesn’t exist
 if [ ! -d "$DATA" ]; then
