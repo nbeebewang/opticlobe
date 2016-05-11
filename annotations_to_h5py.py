@@ -7,11 +7,14 @@ sys.setrecursionlimit(4000000)
 import h5py
 import time
 
+
+folderpath = '../ALIGNMENTDATA/'
+
 # SPECIFY WANTED CHROMOSOMES
 major_chroms = ['chr2R', 'chr2L', 'chr3L', 'chr3R', 'chr4', 'chrX', 'chrY']
 
 # CREATES DICTIONARY CHROMES_LEN WHICH CONTAINS CHROMOSOME NAMES AS KEYS AND LENGTH AS VALUES
-f_ref = open('dm6.fa', 'r')
+f_ref = open(folderpath + 'dm6.fa', 'r')
 chroms_len = {}
 current_chrom = ''
 for i in f_ref:
@@ -36,8 +39,8 @@ for i in f_ref:
 
 startTime = time.time()
 
-if not os.path.exists('h5py_compressed/dm6_annotations'): 
-    os.makedirs('h5py_compressed/dm6_annotations')
+if not os.path.exists(folderpath + 'h5py_compressed/dm6_annotations'): 
+    os.makedirs(folderpath + 'h5py_compressed/dm6_annotations')
 
 
 chrom_counter = 0
@@ -48,13 +51,13 @@ for chrom in chroms_len:
     
     # create new h5py file for each chrom
     filename = chrom + '.h5'
-    filepath = ('h5py_compressed/dm6_annotations/' + filename)
+    filepath = (folderpath + 'h5py_compressed/dm6_annotations/' + filename)
     h5f = h5py.File(filepath, 'w')
     
     for i in range(chroms_len[chrom]):
         chrom_an_dict[i] = []    
     
-    f_ref_ann = open('dm6_Ensembl.gtf', 'r')
+    f_ref_ann = open(folderpath + 'dm6_Ensembl.gtf', 'r')
     counter = 0
     reached = False
     for i in f_ref_ann:

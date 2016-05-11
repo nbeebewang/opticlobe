@@ -1,14 +1,23 @@
 import numpy as np
 import re
 from matplotlib import pyplot as plt 
+import os
 import sys 
 sys.setrecursionlimit(4000000)
 import h5py
 
+# EXPECTED SYS.ARGV ARGUMENTS TO SCRIPT:
+# transcript file
+
+transcript_path = sys.argv[1]   # ../ALIGNMENTDATA/150415_SN651_0372_AH3N2YBCXX__Sample_H_L_M1_1Aligned.sortedByCoord.out.sam
+samplename = transcript_path.split('/')[-1].split('.')[0]  # takes part after last '/', and then from that takes the part before the first '.'
+mainfolder = '/'.join(transcript_path.split('/')[:-1]) + '/' # everything up to samplename
+
+
 major_chroms = ['chr2R', 'chr2L', 'chr3L', 'chr3R', 'chr4', 'chrX', 'chrY']
 
 # CREATES DICTIONARY CHROMES_LEN WHICH CONTAINS CHROMOSOME NAMES AS KEYS AND LENGTH AS VALUES
-f_ref = open('dm6.fa', 'r')
+f_ref = open( mainfolder + 'dm6.fa', 'r')
 chroms_len = {}
 current_chrom = ''
 for i in f_ref:
@@ -32,7 +41,7 @@ for chrom in chroms_len:
     chroms[chrom] = np.zeros(chroms_len[chrom])
 
 # Open transcript sam file    
-f = open('150415_SN651_0372_AH3N2YBCXX__Sample_H_L_M1_1Aligned.sortedByCoord.out.sam', 'r')
+f = open(transcript_path, 'r')
 
 # Add each read from sam file to the chroms arrays
 counter = 0
@@ -55,10 +64,16 @@ for i in f:
     counter += 1
 
 
+
 # WRITE READS TO FILE
+path_to_reads = mainfolder + 'h5py_compressed/reads/'
+if not os.path.exists(path_to_reads):
+    os.makedirs(path_to_reads)
+
 
 for key in chroms:
-    h5f = h5py.File('h5py_compressed/reads_sampledata_' + key + '.h5', 'w')
+    print 'Writing ' + key + ' to h5 file for sample: ' + samplename
+    h5f = h5py.File(path_to_reads + samplename + '_' + key + '.h5', 'w')
     h5f.create_dataset('reads', data=chroms[key])
     h5f.close()
 
