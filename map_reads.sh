@@ -2,7 +2,7 @@
 #
 # summary: script to convert bam file to sam file
 #
-#SBATCH -J sam_to_bam         # job name
+#SBATCH -J map_reads         # job name
 #SBATCH -p eddy # partition (general,serial_requeue)
 #SBATCH -n 1         # number of cores
 #SBATCH -N 1         # number of nodes
