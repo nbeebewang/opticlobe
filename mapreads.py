@@ -7,16 +7,19 @@ import h5py
 
 # EXPECTED SYS.ARGV ARGUMENTS TO SCRIPT:
 # transcript file
+# path to reference genome: dm6.fa
 
 transcript_path = sys.argv[1]   # ../ALIGNMENTDATA/150415_SN651_0372_AH3N2YBCXX__Sample_H_L_M1_1Aligned.sortedByCoord.out.sam
 samplename = transcript_path.split('/')[-1].split('.')[0]  # takes part after last '/', and then from that takes the part before the first '.'
 mainfolder = '/'.join(transcript_path.split('/')[:-1]) + '/' # everything up to samplename
-
+refgenome = sys.argv[2]
 
 major_chroms = ['chr2R', 'chr2L', 'chr3L', 'chr3R', 'chr4', 'chrX', 'chrY']
 
 # CREATES DICTIONARY CHROMES_LEN WHICH CONTAINS CHROMOSOME NAMES AS KEYS AND LENGTH AS VALUES
-f_ref = open( mainfolder + '../../reference_genome/dm6.fa', 'r')
+# f_ref = open( mainfolder + '../../reference_genome/dm6.fa', 'r')
+f_ref = open(refgenome, 'r')
+
 chroms_len = {}
 current_chrom = ''
 for i in f_ref:

@@ -2,7 +2,7 @@
 #
 # summary: script to convert bam file to sam file
 #
-#SBATCH -J bam_to_sam         # job name
+#SBATCH -J sam_to_bam         # job name
 #SBATCH -p eddy # partition (general,serial_requeue)
 #SBATCH -n 1         # number of cores
 #SBATCH -N 1         # number of nodes
@@ -13,6 +13,6 @@
 
 # load modules
 source new-modules.sh
-module load samtools/1.2-fasrc01
 
-samtools view -h $1 > $2
+
+python mapreads.py $1 $2
