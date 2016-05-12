@@ -3,7 +3,6 @@ import re
 from matplotlib import pyplot as plt 
 import os
 import sys 
-sys.setrecursionlimit(4000000)
 import h5py
 
 # EXPECTED SYS.ARGV ARGUMENTS TO SCRIPT:
@@ -17,7 +16,7 @@ mainfolder = '/'.join(transcript_path.split('/')[:-1]) + '/' # everything up to 
 major_chroms = ['chr2R', 'chr2L', 'chr3L', 'chr3R', 'chr4', 'chrX', 'chrY']
 
 # CREATES DICTIONARY CHROMES_LEN WHICH CONTAINS CHROMOSOME NAMES AS KEYS AND LENGTH AS VALUES
-f_ref = open( mainfolder + 'dm6.fa', 'r')
+f_ref = open( mainfolder + '../../reference_genome/dm6.fa', 'r')
 chroms_len = {}
 current_chrom = ''
 for i in f_ref:
