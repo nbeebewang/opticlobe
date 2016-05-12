@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# summary: script to convert bam file to sam file
+# summary: runs mapreads.py script to get reads from sam file and store them in h5 files
 #
 #SBATCH -J map_reads         # job name
 #SBATCH -p eddy # partition (general,serial_requeue)
