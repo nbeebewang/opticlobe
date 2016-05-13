@@ -6,7 +6,7 @@
 #
 
 #inputs
-DATA="/n/eddyfs01/pkoo/data/opticlobe/alignment/STAR2pass/TEST/"
+DATA="/n/eddyfs01/pkoo/data/opticlobe/alignment/STAR2pass/"
 REFGENOME="/n/eddyfs01/pkoo/data/opticlobe/reference_genome/dm6.fa" 
 
 
