@@ -13,6 +13,6 @@
 
 # load modules
 source new-modules.sh
-
+source activate reads
 
 python mapreads.py $1 $2
