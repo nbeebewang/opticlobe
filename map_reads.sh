@@ -8,11 +8,12 @@
 #SBATCH -N 1         # number of nodes
 #SBATCH --mem 8000           # memory pool for all cores
 #SBATCH -t 0-03:00         # time (D-HH:MM)
-#SBATCH -o ../log/bam_to_sam_%A.out          # STDOUT
-#SBATCH -e ../log/bam_to_sam_%A.err         # STDERR
+#SBATCH -o ../log/map_reads_%A.out          # STDOUT
+#SBATCH -e ../log/map_reads_%A.err         # STDERR
 
 # load modules
 source new-modules.sh
+module load python/2.7.6-fasrc01
 source activate reads
 
 python mapreads.py $1 $2
