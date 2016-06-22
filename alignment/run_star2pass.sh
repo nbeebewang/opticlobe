@@ -6,9 +6,10 @@
 #	<path_to_fastq> <path_to_reference_genome> <output_directory>
 
 # inputs
-DATA="/n/regal/eddy_lab/pkoo/opticlobe/data/"
-GENOME="/n/regal/eddy_lab/pkoo/opticlobe/reference_genome/dm6_reference"
-OUTPUT="/n/regal/eddy_lab/pkoo/opticlobe/alignment/"
+#DATA="/n/eddyfs01/pkoo/data/opticlobe/data/"
+DATA="/n/eddyfs01/home/nbeebewang/opticlobe/TEMP_TEST/"
+GENOME="/n/eddyfs01/pkoo/data/opticlobe/reference_genome/dm6.fa"
+OUTPUT="/n/eddyfs01/home/nbeebewang/opticlobe/alignment/"
 
 # make alignment directory
 if [ ! -d "$OUTPUT" ]; then
